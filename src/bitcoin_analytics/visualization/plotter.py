@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 def plot_block_size(df, save_path=None):
+    print("Generating charts...")
     daily = df.groupby('date')['block_size_mb'].mean().reset_index()
     plt.figure(figsize=(12,6))
     plt.plot(daily['date'], daily['block_size_mb'])
@@ -11,6 +11,7 @@ def plot_block_size(df, save_path=None):
     plt.ylabel('Size (MB)')
     if save_path:
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    print("   [1/5] Block size over time →", save_path)
     plt.show()
 
 def plot_transactions(df, save_path=None):
@@ -22,6 +23,7 @@ def plot_transactions(df, save_path=None):
     plt.ylabel('Transactions')
     if save_path:
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    print("   [2/5] Transaction volume →", save_path)
     plt.show()
 
 def plot_segwit(df, segwit_block=481824, save_path=None):
@@ -32,6 +34,7 @@ def plot_segwit(df, segwit_block=481824, save_path=None):
     plt.title('SegWit Effect')
     if save_path:
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    print("   [3/5] SegWit comparison →", save_path)
     plt.show()
 
 def plot_empty_rate(empty_df, save_path=None):
@@ -41,6 +44,7 @@ def plot_empty_rate(empty_df, save_path=None):
     plt.xlabel('Year')
     if save_path:
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    print("   [4/5] Empty block rate →", save_path)
     plt.show()
 
 def plot_intervals(intervals_df, save_path=None):
@@ -52,4 +56,5 @@ def plot_intervals(intervals_df, save_path=None):
     plt.ylabel('Seconds')
     if save_path:
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    print("   [5/5] Block intervals →", save_path)
     plt.show()

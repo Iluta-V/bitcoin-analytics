@@ -26,9 +26,19 @@ class BitcoinAnalyzer:
         empty = empty_block_rate(self.df)
         intervals = block_intervals(self.df)
 
-        plot_block_size(self.df)
-        plot_transactions(self.df)
-        plot_segwit(self.df)
-        plot_empty_rate(empty)
-        plot_intervals(intervals)
+        # Save charts (optional: add path if you want)
+        plot_block_size(self.df, "block_size_over_time.png")
+        plot_transactions(self.df, "transaction_volume.png")
+        plot_segwit(self.df, save_path="segwit_comparison.png")
+        plot_empty_rate(empty, "empty_block_rate.png")
+        plot_intervals(intervals, "block_intervals.png")
+
+        # Print summary statistics
+        print("\nSummary Statistics:")
+        print(f"   - Total blocks: {len(self.df)}")
+        print(f"   - Date range: {self.df['timestamp'].min()} to {self.df['timestamp'].max()}")
+        print(f"   - Average block size: {self.df['block_size_mb'].mean():.2f} MB")
+        if not empty.empty:
+            print(f"   - Empty blocks (<5 tx): {empty['empty_pct'].iloc[-1]:.1f}%")
+        print("\nAnalysis complete. Charts saved to current directory.")
         return self
