@@ -30,13 +30,11 @@
 ## [1.6] - 2025-04-23
 - Added visualizations: block size, transaction volume, SegWit effect, empty blocks, intervals
 - All 5 core charts completed
-
-## [1.7] - 2025-04-24
 - Created installable package with `setup.py`
 - Added `requirements.txt`
 - Wrote `README.md`
 
-## [1.8] - 2025-04-25
+## [1.8] - 2025-04-24
 - Final integration and testing
 - Added UML diagram in `docs/`
 - Tested on Google Colab
